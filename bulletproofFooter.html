@@ -1,0 +1,903 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>Email Preview</title>
+
+		<style type="text/css">
+
+		/* Outlines the grids, remove when sending 
+		table td { border: 1px solid cyan; }*/
+
+		/* CLIENT-SPECIFIC STYLES */
+		body, table, td, a, p { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+		table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+		img { -ms-interpolation-mode: bicubic; }
+        .helpButton {  transition: all 0.2s ease-in-out; }
+        .helpButton:hover td {filter: opacity(50%) !important; transition: all 0.2s ease-in-out; }
+        .helpButton td:hover {filter: opacity(100%)!important; transition: all 0.2s ease-in-out;}
+		:hover.hoverText {background-color: #fff !important; text-decoration-color: #fff !important; 
+              padding: 0.1em 0.1em !important; margin: -0.1em -0.1em !important; z-index: -5 !important;}
+        .hoverClick { transition: all 0.2s ease-in-out; }
+        .hoverClick td:hover {background-color: #3e3e3e !important; transition: all 0.2s ease-in-out;}
+        .hoverClick td:hover a {color: #fff !important; transition: all 0.2s ease-in-out;}
+
+
+		/* RESET STYLES */
+		img { border: 0; outline: none; text-decoration: none; }
+		table { border-collapse: collapse !important; }
+		body { margin: 0 !important; padding: 0 !important; width: 100% !important; text-rendering: optimizeLegibility !important;}
+		h1, h2, h3, h4, h5, h6, p { margin: 0 !important; -webkit-font-smoothing: antialiased !important; text-rendering: optimizeLegibility !important;}
+			
+		/* HIDE ON DESKTOP */
+			.desktopOff { max-height: 0px; font-size: 0px; display: none; }
+			
+		/* iOS BLUE LINKS */
+		a[x-apple-data-detectors] {
+			color: inherit !important;
+			text-decoration: none !important;
+			font-size: inherit !important;
+			font-family: inherit !important;
+			font-weight: inherit !important;
+			line-height: inherit !important;
+		}
+
+		/* ANDROID CENTER FIX */
+		div[style*="margin: 16px 0;"] { margin: 0 !important; }
+
+        /* CUSTOM FONT EMBED */
+        @font-face {
+            font-family: "farnham headline";
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.advance.net/fonts/v1/farnham-headline-regular/farnhamheadline-regular.woff) format('woff');
+            }
+
+        @font-face {
+            font-family: "farnham headline";
+            font-style: normal;
+            font-weight: 600;
+            src: url(https://fonts.advance.net/fonts/v1/farnham-headline-semi-bold/farnhamheadline-semi-bold.woff) format('woff');
+            }
+            
+        @font-face {
+            font-family: "farnham";
+            font-style: normal;
+            font-weight: 400;
+            src: url(https://fonts.advance.net/fonts/v1/farnham-text-regular/farnham-text-regular.woff) 
+            format('woff');
+            }
+
+        @font-face {
+            font-family: 'farnham';
+            font-style: normal;
+            font-weight: 600;
+            src: url(https://fonts.advance.net/fonts/v1/farnham-text-bold/farnham-text-bold.woff) 
+            format('woff');
+            }
+            
+
+        @font-face {
+            font-family: "farnham";
+            font-style: italic;
+            font-weight: 400;
+            src: url(https://fonts.advance.net/fonts/v1/farnham-text-italic/farnham-text-italic.woff) 
+            format('woff');
+            }
+
+        @font-face {
+            font-family: 'farnham';
+            font-style: italic;
+            font-weight: 600;
+            src: url(https://fonts.advance.net/fonts/v1/farnham-text-bold-italic/farnham-text-bold-italic.woff) 
+            format('woff');
+            }
+	
+
+		/* MEDIA QUERIES - THESE ARE MOBILE STYLES - STAY WITHIN THE @MEDIA CURLY BRACES */
+		@media all and (max-width:639px){ 
+			/*MOBILE RESET STYLES*/
+			.mobile-320 { width:320px!important; padding: 0 !important; }
+			.mobile-300 { width:300px!important;  padding: 0 !important; }
+			.mobile-200 { width:200px!important; padding: 0 !important; }
+			.mobile-240 { width:240px!important; padding: 0 !important; }
+			.mobile-160 { width:160px!important; padding: 0 !important; }
+			.mobile-80 { width:80px!important; padding: 0 !important; }
+			.stack { width:300px!important; display:block!important; padding: 0 !important; }
+			.img { width:100% !important; height:auto !important; }
+            .hoverClick {height: 50px !important;}
+            .footerBack {background-color: #e7e7e7 !important;}
+			/*MOBILE VISIBILITY*/
+			.mobileOff { width: 0px !important; display: none !important; }
+			.mobileOn { display: block !important; max-height:none !important; font-size:10px !important; }
+			/*ALIGNERS*/
+			.center-align { text-align: center !important; margin: 0 auto !important; }
+			.left-align { text-align: left !important; }
+			.right-align { text-align: right !important; }
+			/*HEIGHT PADDING*/
+			.h-pad { padding: 5px 0 !important; }
+            .bottom-pad  { padding: 0px 0px 40px 0px !important;}
+			/*WIDTH PADDING*/
+			.w-pad { padding: 0 5px !important; }
+			/*TEXT RESIZERS*/
+			.h1-text-resize { font-size:24px !important; line-height:1.2 !important; }
+			.h2-text-resize { font-size:18px !important; line-height:1.2 !important; }
+			.h3-text-resize { font-size:16px !important; line-height:1.2 !important; }
+			.body-text-resize { font-size:14px !important; line-height:1.2 !important; }
+			.intro-text-resize { font-size:14.25px !important; line-height:24px !important; margin-left: 0px !important; margin-right: 0px !important;  }
+			/*IMAGE RESIZERS*/
+			.imgresize100 img {width:100% !important; height:auto !important;}
+			.imgresize90 img {width:90% !important; height:auto !important;}
+			/*WIDTH RESIZERS*/
+			.resize90 {width:90% !important; height:auto !important;}
+
+		/*INSERT ADDITIONAL MOBILE SYTLES ABOVE THIS LINE*/
+		}
+
+		</style>
+	</head>
+<body style="margin:0; padding:0; mso-line-height-rule: exactly;">
+
+<center>
+<!-- mobile-300 TABLE -->
+<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0">
+	<!-- INIVISIBLE PREHEADER: 35-100 characters recommended -->
+	<tr>
+		<td style="display:none !important;
+		visibility:hidden;
+		mso-hide:all;
+		font-size:1px;
+		color:#ffffff;
+		line-height:1px;
+		max-height:0px;
+		max-width:0px;
+		opacity:0;
+		overflow:hidden;">
+		This is preheader text. Less than 100 characters recommended.
+		</td>
+	</tr>
+	<!-- END PREHEADER -->
+	<tr>
+		<td align="center" valign="top">
+	<!-- TEMPLATE BODY - INSERT SNIPPETS BELOW -->
+
+<!-- FULL WIDTH BACKGROUND COLOR - DARK -->
+<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#333333">
+<tr>
+    <td align="center" valign="top">
+	<!-- LOGO -->
+		<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF">
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top">
+				<!-- ALIGNMENT TABLE -->
+				<table class="mobile-300" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+					<!-- ADD IMG RESIZER CLASS TO THIS <td>, NOT <img> -->
+						<td align="left" valign="top">
+							<!-- LOGO - FILE DIMENSIONS SHOULD BE DOUBLE FOR RETINA DISPLAY
+								width="" attribute must be set -->
+							<a rel="noopener" href="#link" target="_blank"><img src="https://placehold.co/200x50.jpg?text=logo" width="200" style="margin:0; padding:0; border:none; display:block;" border="0" alt="logo" /></a>
+						</td>
+					</tr>
+				</table>
+
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END LOGO -->
+
+
+	<!-- ! PRIMARY HEADLINE ! USE ONLY ONCE PER EMAIL ! -->
+		<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF">
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top">
+			<!-- ALIGNMENT TABLE - CHANGE width="" TO ADJUST DISPLAY WIDTH -->
+				<table class="mobile-300" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td align="left" valign="top">
+						<!-- USE ONLY 1 <H1> ELEMENT, AS THE FIRST TEXT ELEMENT WHENEVER POSSIBLE -->
+							<h1 style="font-family: 'farnham headline', Georgia, serif; font-size: 32px; line-height: 1.2; color: #000000;"><a rel="noopener" href="#link" target="_blank" style="color: #000000; text-decoration: none; display: inline-block;">Anytime you learn something your time and energy are not wasted.</a></h1>
+						</td>
+					</tr>
+				</table>
+
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END PRIMARY HEADLINE ! USE ONLY ONCE ! -->
+
+
+	<!-- FULL WIDTH TEXT -->
+	<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF">
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top">
+			<!-- ALIGNMENT TABLE - CHANGE width="" TO ADJUST DISPLAY WIDTH -->
+				<table class="mobile-300" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<td align="left" valign="top">
+							<p style="font-family: 'Arial', sans-serif; font-size: 16px; line-height: 1.4; color: #000000;">That is when you can experience true joy, when you have no fear. In your world you can create anything you desire. If you don't think every day is a good day - try missing a few. You'll see. Clouds are free they come and go as they please. We'll do another happy little painting.</p>
+						</td>
+					</tr>
+				</table>
+
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END FULL WIDTH TEXT -->
+
+
+
+	<!-- LEFT SIDECAR -->
+	<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#FFFFFF">
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top">
+			<!-- PARENT ALIGNMENT TABLE -->
+				<table class="mobile-300" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+			<!-- IMAGE COLUMN -->
+					<!-- ADD IMG RESIZER CLASS TO THIS <td>, NOT <img> -->
+						<td class="stack imgresize100" align="center" valign="top">
+						<!-- FILE DIMENSIONS SHOULD BE DOUBLE FOR RETINA DISPLAY
+							width="" attribute must be set -->
+						<a rel="noopener" href="#link" target="_blank"><img src="https://placehold.co/295x250.jpg" width="295" style="margin:0; padding:0; border:none; display:block;" border="0" alt="" /></a>
+						</td>
+					<!-- COLUMN SPACER -->
+						<td class="stack" width="10" align="center" valign="top" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+			<!-- CONTENT COLUMN -->
+						<td class="stack" width="295" align="center" valign="top">
+
+						<table class="mobile-300" role="presentation" cellpadding="0" cellspacing="0" border="0" >
+						<!-- MOBILE-ONLY SPACER: ADDS SPACE ABOVE HEADLINE -->
+							<tr>
+								<td class="desktopOff mobileOn" height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+							</tr>
+					<!-- HEADLINE -->
+							<tr>
+								<td class="center-align" align="left" valign="top">
+							<h3 style="font-family: farnham, Georgia, serif; font-size: 18px; line-height: 1.2; color: #000000;"><a rel="noopener" href="#link" target="_blank" style="color: #000000; text-decoration: none; display: inline-block;">A little happy sunlight shining through there.</a></h3>
+								</td>
+							</tr>
+						<!-- ROW SPACER -->
+							<tr>
+								<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+							</tr>
+					<!-- BODY TEXT -->
+							<tr>
+								<td class="center-align" align="left" valign="top">
+									<p style="font-family: 'Arial', sans-serif; font-size: 16px; line-height: 1.4; color: #000000;">With practice comes confidence. You've got to learn to fight the temptation to resist these things. Just let them happen. This is probably the greatest thing that's ever happened in my life.</p>
+								</td>
+							</tr>
+						<!-- ROW SPACER -->
+							<tr>
+								<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+							</tr>
+					<!-- BULLETPROOF BUTTON -->
+							<tr>
+								<!-- CHANGE ALIGMENT ON THIS <td> -->
+								<td align="left" valign="top">
+								<!-- WIDTH ADJUSTMENT TABLE
+								ADD width="" TO SET A FIXED BUTTON WIDTH, USE 100% FOR FULL WIDTH BUTTON -->
+								<table class="center-align" role="presentation" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+										<!-- PADDING ON THIS <td> MAKES WIDTH RESPONSIVE TO LENGTH OF BUTTON TEXT -->
+										<td style="padding: 8px 20px; border-radius:5px; background-color: gray;" align="center">
+											<a rel="noopener" href="#link" target="_blank" style="font-size: 16px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; color: #ffffff; text-decoration: none; display: inline-block;">I am a button</a>
+										</td>
+									</tr>
+								</table>
+
+								</td>
+							</tr>
+						</table>
+
+						</td>
+			<!-- END CONTENT COLUMN -->
+					</tr>
+				</table>
+
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END LEFT SIDECAR -->
+
+</td>
+</tr>
+</table>
+<!-- END FULL WIDTH BACKGROUND COLOR - DARK -->
+
+<!-- FULL WIDTH BACKGROUND COLOR - LIGHT, DOWNPAGE -->
+<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#d1d1d1" class="footerBack">
+    <tr>
+        <td align="center" valign="top">
+
+            <!-- FULL WIDTH TEXT -->
+            <table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#e7e7e7">
+                    <tr>
+                        <td align="center" valign="top">
+                    <!-- ALIGNMENT TABLE - CHANGE width="" TO ADJUST DISPLAY WIDTH -->
+                        <table class="mobile-320" role="presentation" width="400" cellpadding="0" cellspacing="0" border="0">
+                        <!-- SPACER -->
+                            <tr>
+                                <td height="50" style="font-size:10px; line-height:1;">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="center-align" align="left" valign="top">
+                                    <h3 style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-wrap: balance; color: #1C1E22;"><a rel="noopener" href="https://reader.aa.mlive.com" target="_blank" style="color: #1C1E22; text-decoration: none; display: inline-block;">Your Ann Arbor News Online</a></h3>
+                                </td>
+                            </tr>
+                            <!-- SPACER -->
+                            <tr>
+                                <td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="center-align" align="left" valign="top">
+								        <p class="intro-text-resize" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900; font-size: 16px; line-height: 28px; color: #1C1E22; text-wrap: balance;">Local journalism informs and empowers communities, but newsrooms nationwide are vanishing. We need more than just technology to survive — we need you. <br>Your engagement strengthens the reporting that matters most to your community.</p>
+                                </td>
+                            </tr>
+                            <!-- SPACER -->
+                            <tr>
+                                <td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td class="center-align" align="left" valign="top">
+								    <p class="intro-text-resize" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 16px; line-height: 28px; color: #1C1E22; text-wrap: balance;">As a reader-funded newsroom, we rely on subscribers to support and sustain reliable and responsible local journalism. The Ann Arbor News online is your best place for updated local news, investigative stories, and special sections not available in print.</p>
+                                </td>
+                            </tr>
+                            <!-- SPACER -->
+                                <tr>
+                                    <td height="20" style="font-size:10px; line-height:1;">&nbsp;</td>
+                                </tr>
+                        </table>
+                <!-- PARENT ALIGNMENT -->
+				<table class="mobile-300" role="presentation" width="400" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+                        <td class="center-align" align="left" valign="top">
+                            <h3 style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-wrap: balance; color: #1C1E22;"><a rel="noopener" href="https://reader.aa.mlive.com" target="_blank" style="color: #1C1E22; text-decoration: none; display: inline-block;">Get online!</a></h3>
+                        </td>
+                    </tr>
+                    <!-- ROW SPACER -->
+                    <tr>
+                        <td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+                    </tr>
+                    <!-- BODY TEXT -->
+					<tr>
+						<td class="center-align" align="left" valign="top">
+							<p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 16px; line-height: 28px; color: #1C1E22;">Visit reader.aa.mlive.com or register your account to access the online newspaper. Free for subscribers.</p>
+						</td>
+					</tr>
+                    <!-- ROW SPACER -->
+                    <tr>
+                        <td height="25" style="font-size:10px; line-height:1;">&nbsp;</td>
+                    </tr>
+                </table>
+                        </td>
+                    </tr>
+                </table>
+            <!-- END FULL WIDTH TEXT -->
+
+
+	<!-- LIST 2-COLUMNS -->
+	<table class="mobile-320" role="presentation" width="640" style="background-color:#e7e7e7;"  cellpadding="0" cellspacing="0" border="0" bgcolor="#1C1E22">
+			<tr>
+				<td align="left" valign="top">
+                <!-- PARENT ALIGNMENT -->
+				<table class="mobile-320" role="presentation" width="520" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+                    <!-- LEFT CONTENT COLUMN -->
+                        <td class="stack bottom-pad" width="320" align="left" valign="top">
+                            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td align="left" >
+                                        <table class="mobile-320" width="325" role="presentation" cellpadding="0" cellspacing="0" border="0" >
+                                            <tr>
+                                                <td align="right">
+                                                    <table class="mobile-320 hoverClick center-align" width="180" role="presentation" cellpadding="0" cellspacing="0" border="0" >
+                                                        <!-- BUTTON -->
+                                                            <tr>
+                                                                <td style="background-color: gray;" align="center" height="50" >
+                                                                    <a rel="noopener" href="#link" target="_blank" style="font-size: 12px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color: #e7e7e7; text-decoration: none; display: inline-block; text-transform: uppercase; letter-spacing: 2px;">I am a button</a>
+                                                                </td>
+                                                            </tr>
+                                                        <!-- ROW SPACER -->
+                                                            <tr>
+                                                                <td class="stack" height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+                                                            </tr>
+                                                        <!-- BUTTON -->
+                                                            <tr>
+                                                                <td style="background-color: gray;" align="center" height="50" >
+                                                                    <a rel="noopener" href="#link" target="_blank" style="font-size: 12px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: bold; color: #e7e7e7; text-decoration: none; display: inline-block; text-transform: uppercase; letter-spacing: 2px;">I am a button</a>
+                                                                </td>
+                                                            </tr>
+                                                    </table>
+                                                </td>
+                                                <td width="25" style="font-size:10px; line-height:1;">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- ROW SPACER -->
+                                    <tr>
+                                        <td height="35" style="font-size:10px; line-height:1;">&nbsp;</td>
+                                    </tr>
+                                <tr>
+                                    <td align="right" class="center-align imgresize100">
+                                    <img src="https://media.sailthru.com/composer/images/bazh/wxt6ga5j/clb/3kb/k9z/INTRO%20MI%20AA%20light.gif"  width="260" height="210" style="margin:0; padding:0; border:none; display:block;" border="0" alt="On mobile, desktop & tablet">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    <!-- END LEFT CONTENT COLUMN -->
+     
+
+                <!-- RIGHT CONTENT COLUMN -->
+                        <td class="stack bottom-pad" width="200" align="right" valign="top">
+                            <table class="mobile-320" role="presentation" cellpadding="0" cellspacing="0" border="0" >
+                                <!-- HEADLINE -->
+                                    <tr>
+                                        <td class="center-align" align="left" valign="top">
+                                            <p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-wrap: balance; color: #1C1E22;">Made for you</p>
+                                        </td>
+                                    </tr>
+                                <!-- ROW SPACER -->
+                                    <tr>
+                                        <td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+                                    </tr>
+                                <!-- LIST TEXT -->
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <!-- ALIGNMENT TABLE LIST - CHANGE width="" TO ADJUST DISPLAY WIDTH -->
+                                            <table class="mobile-320" role="presentation" width="200" cellpadding="0" cellspacing="0" border="0">
+                                                <tr>
+                                                    <td align="left" valign="top">
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Zoom in for easier reading</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Searchable content</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Access to past editions</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Share your subscription</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Bookmark favorite articles</p>
+                                                            </td>
+                                                        </tr>                                   
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                <!-- END LIST TEXT -->                                
+                                <!-- ROW SPACER -->
+                                    <tr>
+                                        <td height="30" style="font-size:10px; line-height:1;">&nbsp;</td>
+                                    </tr>
+                                <!-- HEADLINE -->
+                                    <tr>
+                                        <td class="center-align" align="left" valign="top" width="190">
+                                            <p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 16px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; text-wrap: balance; color: #1C1E22;">What's included</p>
+                                        </td>
+                                    </tr>
+                                <!-- ROW SPACER -->
+                                    <tr>
+                                        <td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+                                    </tr>
+                                <!-- LIST TEXT -->
+                                    <tr>
+                                        <td align="left" valign="top">
+                                            <!-- ALIGNMENT TABLE LIST - CHANGE width="" TO ADJUST DISPLAY WIDTH -->
+                                            <table class="mobile-320" role="presentation" width="200" cellpadding="0" cellspacing="0" border="0">
+                                                <tr>
+                                                    <td align="left" valign="top">
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Later news & sports updates</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Extra In&#x2011;depth&nbsp;pages of news,&nbsp;sports,&nbsp;opinion&nbsp;&&nbsp;more</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Daily big primetime TV grid</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">Exclusive Special sections</p>
+                                                            </td>
+                                                        </tr>
+                                                    <!-- ROW SPACER --><tr><td height="5" style="font-size:5px; line-height:1;">&nbsp;</td></tr>
+                                                        <tr>
+                                                            <td align="left" valign="top" class="center-align">
+                                                                <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; line-height: 1.25; color: #1C1E22; text-wrap: balance;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility">NYT Book Review</p>
+                                                            </td>
+                                                        </tr>                          
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                <!-- END LIST TEXT -->
+                            </table>
+                        </td>
+                    <!-- END RIGHT CONTENT COLUMN -->
+					</tr>
+				</table>
+				</td>
+			</tr>
+	</table>
+	<!-- END LIST 2-COLUMNS -->
+
+
+        </td>
+    </tr>
+</table>
+<!-- END FULL WIDTH BACKGROUND COLOR - LIGHT, DOWNPAGE -->
+
+
+<!-- FULL WIDTH BACKGROUND COLOR - LIGHT, FOOTER -->
+<table role="presentation" width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#d1d1d1" class="footerBack">
+    <tr>
+        <td align="center" valign="top">
+
+
+	<!-- 3 COLUMN CONTENT: IMAGE, TEXT, BUTTON -->
+		<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#e7e7e7">
+        <!-- RULE ABOVE -->
+            <tr>
+                <td align="center" valign="top">
+                    <table class="mobile-240" role="presentation" width="500" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td align="center" valign="top">
+                                <tr><td width="100%" align="center"style="border-top: 1px solid #1C1E22;"></td></tr>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+			<tr>
+				<td align="center" valign="top">
+		<!-- PARENT ALIGNMENT TABLE -->
+				<table class="mobile-240 hoverClick" role="presentation" width="300" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+			<!-- LEFT COLUMN BUTTON -->
+						<td class="" width="100" align="center" valign="middle">
+						<!-- WIDTH ADJUSTMENT TABLE ADD width="" TO SET A FIXED BUTTON WIDTH, USE 100% FOR FULL WIDTH BUTTON -->
+							<table class="center-align mobile-80" width="100" height="60" role="presentation" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+								    <td style="border-radius:0px; background-color: #e7e7e7;" align="center" height="50">
+										<a rel="noopener" href="https://www.mlive.com/mlive_contacts/page/contact_home.html" target="_blank" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1C1E22; font-size: 12px; font-weight: bold; text-align: center; text-transform: capitalize; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; display: block; font-style: normal; text-decoration: none;">Contacts</a>
+								    </td>
+							    </tr>
+						    </table>
+						</td>
+			<!-- END LEFT BUTTON -->
+
+			<!-- CENTER COLUMN BUTTON -->
+						<td class="" width="100" align="center" valign="middle">
+						<!-- WIDTH ADJUSTMENT TABLE ADD width="" TO SET A FIXED BUTTON WIDTH, USE 100% FOR FULL WIDTH BUTTON -->
+							<table class="center-align mobile-80" width="100" height="60" role="presentation" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+								    <td style="border-radius:0px; background-color: #e7e7e7;" align="center" height="50">
+										<a rel="noopener" href="https://www.mlive.com/privacy-policy/" target="_blank" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1C1E22; font-size:12px; font-weight: bold; text-align: center; text-transform: capitalize; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; display: block; font-style: normal; text-decoration: none;">Privacy</a>
+								    </td>
+							    </tr>
+						    </table>
+						</td>
+			<!-- END CENTER BUTTON -->
+
+
+			<!-- RIGHT COLUMN BUTTON -->
+						<td class="" width="100" align="center" valign="middle">
+						<!-- WIDTH ADJUSTMENT TABLE ADD width="" TO SET A FIXED BUTTON WIDTH, USE 100% FOR FULL WIDTH BUTTON -->
+							<table class="center-align mobile-80" width="100" height="60" role="presentation" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+								    <td style="border-radius:0px; background-color: #e7e7e7;" align="center" height="50">
+										<a rel="noopener" href="https://myaccount.mlive.com" target="_blank" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1C1E22; font-size:12px; font-weight: bold; text-align: center; text-transform: capitalize; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; display: block; font-style: normal; text-decoration: none;">Account</a>
+								    </td>
+							    </tr>
+						    </table>
+						</td>
+			<!-- END RIGHT BUTTON -->
+					</tr>
+				</table>
+				</td>
+			</tr>
+        <!-- RULE ABOVE -->
+            <tr>
+                <td align="center" valign="top">
+                    <table class="mobile-240" role="presentation" width="340" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td align="center" valign="top">
+                                <tr><td width="100%" align="center"style="border-top: 1px solid #1C1E22;"></td></tr>
+                                <!--SPACER--><tr><td height="25" style="font-size:10px; line-height:1;">&nbsp;</td></tr>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+		</table>
+	<!-- END 3 COLUMN CONTENT: IMAGE, TEXT, BUTTON -->
+
+
+	<!-- FOOTER LOGO -->
+		<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#e7e7e7">
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top">
+				<!-- ALIGNMENT TABLE -->
+				<table class="mobile-300" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+					<!-- ADD IMG RESIZER CLASS TO THIS <td>, NOT <img> -->
+						<td align="center" valign="top">
+							<!-- LOGO - FILE DIMENSIONS SHOULD BE DOUBLE FOR RETINA DISPLAY
+								width="" attribute must be set -->
+                                <a rel="noopener" href="https://reader.aa.mlive.com" target="_blank"><img src="https://media.sailthru.com/composer/images/bazh/3iinw7do/37i/8o8/fcx/FOOTERLOGO_MI_AnnArbor.png" width="260" style="margin:0; padding:0; border:none; display:block;" border="0" alt="The Ann Arbor News logo" /></a>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="40" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END LOGO -->
+
+	<!-- 2 COLUMN CONTENT: APP BUTTONS -->
+		<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#e7e7e7">
+		<!-- HEADER -->
+			<tr>
+                <td align="center" valign="top">
+                    <p class="" style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1C1E22; font-size:12px; line-height:16px; font-weight: 400; text-align: center; text-wrap: balance; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; letter-spacing: 0.5;"><strong>Download </strong>the app</p> 
+                </td>
+			</tr>
+		<!-- HEADER -->
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top">
+		<!-- PARENT ALIGNMENT TABLE -->
+				<table class="mobile-300 helpButton" role="presentation" width="340" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+			<!-- LEFT COLUMN BUTTON -->
+						<td class="stack" width="160" align="center" valign="top">
+						<!-- WIDTH ADJUSTMENT TABLE ADD width="" TO SET A FIXED BUTTON WIDTH, USE 100% FOR FULL WIDTH BUTTON -->
+							<table class="center-align" role="presentation" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+								    <td style="" align="center">
+                                        <a rel="noopener" href="https://apps.apple.com/us/app/the-ann-arbor-news/id792731951" target="_blank"><img src="https://media.sailthru.com/composer/images/bazh/wxt6ga5j/uq9/g84/1wd/APP_Apple.png" width="160" style="display:block; text-decoration:none; text-align:center; font-size:12px; color:transparent; background: transparent; mso-line-height-rule:exactly; line-height:22px; font-weight: bold; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;" class="center-align" alt="Apple App Store button"/></a>
+								    </td>
+							    </tr>
+						    </table>
+						</td>
+			<!-- END LEFT BUTTON -->
+
+					<!-- COLUMN SPACER -->
+						<td class="stack h-pad" width="20" align="center" valign="top" style="font-size: 0px; line-height: 0px;">&nbsp;</td>
+
+			<!-- RIGHT COLUMN BUTTON -->
+						<td class="stack" width="160" align="center" valign="top">
+						<!-- WIDTH ADJUSTMENT TABLE ADD width="" TO SET A FIXED BUTTON WIDTH, USE 100% FOR FULL WIDTH BUTTON -->
+							<table class="center-align" width="120" role="presentation" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+								    <td style="" align="center">
+                                        <a rel="noopener" href="https://play.google.com/store/apps/details?id=com.advancelocal.annarbor" target="_blank"><img src="https://media.sailthru.com/composer/images/bazh/wxt6ga5j/qp3/u0b/gvp/APP_Google.png" width="160" style="display:block; text-decoration:none; text-align:center; font-size:12px; color:transparent; background: transparent; mso-line-height-rule:exactly; line-height:22px; font-weight: bold; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;" class="center-align" alt="Google Play button"/></a>
+								    </td>
+							    </tr>
+						    </table>
+						</td>
+			<!-- END RIGHT BUTTON -->
+					</tr>
+				</table>
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END 2 COLUMN CONTENT: IMAGE, TEXT, BUTTON -->
+
+    <!-- START FOOTER RULE 400-->
+        <table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" style="background-color:#e7e7e7;" bgcolor="#e7e7e7">
+            <tr>
+                <td align="center" valign="top">
+                    <table class="mobile-240" role="presentation" width="340" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td align="center" valign="top">
+                                <!--SPACER--><tr><td height="25" style="font-size:10px; line-height:1;">&nbsp;</td></tr>
+                                <tr><td width="100%" align="center"style="padding: 10px 0px 10px 0px; border-top: 1px solid #1C1E22;"></td></tr>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    <!-- END FOOTER RULE 400-->
+
+	<!-- ! SITE ADDRESS & TEXT ! -->
+		<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#e7e7e7">
+			<tr>
+				<td align="center" valign="top">
+			<!-- ALIGNMENT TABLE -->
+				<table class="mobile-300" style="text-wrap: balance;" role="presentation" width="400" cellpadding="0" cellspacing="0" border="0">
+                <!-- CONTACT EZ -->
+                    <tr>
+                        <td width="100%" align="center" >
+                            <p style="color:#1C1E22; display: inline; text-transform: capitalize; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:12px; line-height:16px; font-weight: 400; text-align: center;  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-wrap: balance;"><strong>The Ann Arbor News. </strong>111 N Ashley St., Ann Arbor, MI 48104.</p>
+                            <p style="color:#1C1E22; display: inline; text-transform: none; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; font-size:12px; line-height:16px; font-weight: 400; text-align: center; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-wrap: balance;">You received this email because you are a subscriber to <a rel="noopener" href="https://www.mlive.com/" class="hovertext"  target="_blank" style="color:#1C1E22; text-decoration:none;">mlive.com</a> or <a rel="noopener" href="https://reader.aa.mlive.com" class="hovertext"  target="_blank" style="color:#1C1E22; text-decoration:none;">The Ann Arbor News</a>. Click here to<a rel="noopener" href="{optout_confirm_url + '&list_param=' + blast.list}" class="hoverText"  target="_blank" style="color:#1C1E22; text-decoration:underline;"> Unsubscribe.</a></p>
+                        </td>
+                    </tr>
+				<!-- ROW SPACER -->
+					<tr>
+						<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- SITE ADDRESS & TEXT ! -->    
+
+	<!-- 2 LOGOS + HEAD CONTACT EZ -->
+    <table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#e7e7e7">
+        <tr>
+            <td width="100%" align="center" style="">
+                <p style="display: inline; font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1C1E22; font-size:12px; line-height:16px; font-weight: 400; text-align: center; text-wrap: balance; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility"><strong>Questions?</strong> Call or email</p> 
+            </td>
+        </tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" valign="top">
+				<!-- ALIGNMENT TABLE -->
+				<table class="mobile-160 helpButton" role="presentation" width="160" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+					<!-- ADD IMG RESIZER CLASS TO THIS <td>, NOT <img> -->
+						<td class="" align="center" valign="top">
+							<!-- LOGO - FILE DIMENSIONS SHOULD BE DOUBLE FOR RETINA DISPLAY
+								width="" attribute must be set -->
+							<a rel="noopener" href="mailto:digitalservice@mlive.com?subject=Please%20help%20me with%20The Ann Arbor News" target="_blank"><img src="https://media.sailthru.com/composer/images/bazh/wxt6ga5j/cue/vn5/f8d/HELP_email_2.png" width="70" style="margin:0; padding:0; border:none; display:block;" border="0" alt="logo" /></a>
+						</td>
+                    <!-- ADD IMG RESIZER CLASS TO THIS <td>, NOT <img> -->
+						<td class="" align="center" valign="top">
+							<!-- LOGO - FILE DIMENSIONS SHOULD BE DOUBLE FOR RETINA DISPLAY
+								width="" attribute must be set -->
+							<a rel="noopener" href="tel:7349264555" target="_blank"><img src="https://media.sailthru.com/composer/images/bazh/wxt6ga5j/p49/b69/d3l/HELP_phone_2.png" width="70" style="margin:0; padding:0; border:none; display:block;" border="0" alt="(333)444-555" /></a>
+						</td>
+					</tr>
+				</table>
+
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END 2 LOGOS -->    
+
+	<!-- ! CONTACT EZ & COPYRIGHT ! -->
+		<table class="mobile-320" role="presentation" width="640" cellpadding="0" cellspacing="0" border="0" bgcolor="#e7e7e7">
+			<tr>
+				<td align="center" valign="top">
+			<!-- ALIGNMENT TABLE -->
+				<table class="mobile-300" role="presentation" width="600" cellpadding="0" cellspacing="0" border="0">
+                <!-- CONTACT EZ -->
+                    <tr>
+                        <td width="100%" align="center" >
+                            <p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1C1E22; font-size:12px; line-height:18px; font-weight: 400; text-align: center; text-wrap: balance; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; text-decoration: none;">Click to call <b>(734) 926-4555</b><br> or 
+                            email <b>digitalservice@mlive.com</b>.</p> 
+                        </td>
+                    </tr>
+				<!-- ROW SPACER -->
+					<tr>
+						<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+					</tr>
+				<!-- CONTACT EZ addendum -->
+                    <tr>
+                        <td width="100%" align="center" >
+                            <p style="font-family:'Helvetica Neue', Helvetica, Arial, sans-serif; color:#1C1E22; font-size:10px; line-height:16px; font-weight: 400; text-align: center; text-wrap: balance; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-style: italic;">*not supported on all devices</p> 
+                        </td>
+                    </tr>
+				<!-- ROW SPACER -->
+					<tr>
+						<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+					</tr>
+				<!-- COPYRIGHT -->
+					<tr>
+						<td align="center" valign="top">
+                            <p style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; font-size:7px; line-height:1.4; -webkit-text-size-adjust: none; color: #1C1E22;">©2025. Advance Local. All rights reserved.</p>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+		<!-- SPACER -->
+			<tr>
+				<td height="10" style="font-size:10px; line-height:1;">&nbsp;</td>
+			</tr>
+		</table>
+	<!-- END ! CONTACT EX COPYRIGHT  ! -->
+
+</td>
+</tr>
+</table>
+<!-- END FULL WIDTH BACKGROUND COLOR - LIGHT, FOOTER -->
+	<!-- END TEMPLATE BODY - INSERT SNIPPETS ABOVE -->
+		</td>
+	</tr>
+</table>
+</center>
+{beacon}
+</body>
+</html>
